@@ -26,4 +26,6 @@ const  { authJwt } = require('../middleware');
           '/api/test/mod',
         [authJwt.verifyToken,authJwt.isModerator],
         controller.moderatorBoard );   
+
+        //testing
 }     
