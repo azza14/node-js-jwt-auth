@@ -26,7 +26,6 @@ exports.signUp =(req,res)=>{
                 }
             }).then( roles =>{
                 user.setRoles(roles).then(()=>{
-                    console.log('tessssssssssssssssst',roles);
                     console.log('roles',  req.body.roles);
                 res.send({ message:'User was registered successfully!'})
                 });
