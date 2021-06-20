@@ -12,7 +12,7 @@ const  { authJwt } = require('../middleware');
     });
 
     app.get( 
-          '/api/test/all',[controller.allAcess]);
+          '/api/test/allUser',[controller.allAcess]);
     
     app.get(
           '/api/test/user',[authJwt.verifyToken],controller.userBoard);
