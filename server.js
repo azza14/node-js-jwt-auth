@@ -19,7 +19,7 @@ const Role= db.role;
 // In development,
 // you may need to drop existing tables and re-sync database.
 // So you can use force: true
-db.sequelize.sync({ force: true}).then(()=>{
+db.sequelize.sync({ force: false}).then(()=>{
   console.log('create Db');
   initial();
 })
