@@ -13,7 +13,8 @@ exports.signUp =(req,res)=>{
     User.create({
         username: req.body.username,
         email:req.body.email,
-        password:  bcrypt.hashSync(req.body.password,8)
+        password:  bcrypt.hashSync(req.body.password,8),
+
     })
     .then( user=>{
         if(req.body.roles){
@@ -24,13 +25,15 @@ exports.signUp =(req,res)=>{
                     }
                 }
             }).then( roles =>{
-                user.setRole(roles).then(()=>{
+                user.setRoles(roles).then(()=>{
+                    console.log('tessssssssssssssssst',roles);
+                    console.log('roles',  req.body.roles);
                 res.send({ message:'User was registered successfully!'})
                 });
             });
         }
         else{
-            user.setRole([1]).then(()=>{
+            user.setRoles([1]).then(()=>{
                 res.send({ message: "User was registered successfully!" });
 
             });
@@ -73,8 +76,17 @@ exports.signin= (req,res)=>{
            for (let i = 0; i < roles.length; i++) {
             authorities.push('ROLE' + roles[i].name.toUpperCase());               
            }
-           
-       })
+           res.status(200).send({
+               id:user.id,
+               username: user.username,
+               email: user.email,
+               roles:authorities,
+               accessToken:token
+           });
+       });
      })
+     .catch(err=>{
+         res.status(500).send({ message:err.message });
+     });
 }
 
