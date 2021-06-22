@@ -11,9 +11,13 @@
     "url": "nodejs, express, jwt,authentication, mysql"
   },
   "keywords": [
-    "Azza"
+    "nodejs",
+    "upload",
+    "download",
+    "rest api",
+    "file"
   ],
-  "author": "",
+  "author": "Azza",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -21,6 +25,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
     "mysql2": "^2.2.5",
     "sequelize": "^6.6.2"
   }

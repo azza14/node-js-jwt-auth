@@ -19,5 +19,4 @@ const {  verifySingUp  }= require('../middleware');
 
      app.post('/api/auth/signin',controller.signin);
  };
-
- 
+//prisma 

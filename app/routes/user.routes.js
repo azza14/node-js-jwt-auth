@@ -1,5 +1,5 @@
 
-const  { authJwt } = require('../middleware');
+ const  { authJwt } = require('../middleware');
  const controller= require('../controllers/user.controller');
 
  module.exports= function(app){
@@ -26,6 +26,4 @@ const  { authJwt } = require('../middleware');
           '/api/test/mod',
         [authJwt.verifyToken,authJwt.isModerator],
         controller.moderatorBoard );   
-
-        //testing
 }     
