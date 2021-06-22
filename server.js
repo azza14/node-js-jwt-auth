@@ -26,19 +26,21 @@ db.sequelize.sync({ force: false}).then(()=>{
 })
 
 
-function initial(){
-  Role.create({
-    id:1,
+ async function initial(){
+  await Role.create({
+   // id:1,
     name:'user'
   });
 
-  Role.create({
-    id:2,
+  await Role.create({
+   // id:2,
     name:'moderator'
   });
+  console.log('test create ')
 
-  Role.create({
-    id:3,
+  await  Role.create({
+    
+   // id:3,
     name:'admin'
   });
 }
