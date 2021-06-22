@@ -5,7 +5,6 @@ const bodyParser=require('body-parser')
 const cors = require('cors')
 
 global.__basedir= __dirname;
-
 const app = express()
 var corsOptions={
     origin:"http://localhost:8081"
@@ -47,6 +46,18 @@ function initial(){
 //routes
  require('./app/routes/auth.routes')(app);
  require('./app/routes/user.routes')(app);
+ 
+require('./app/routes/index')(app);
+
+// production error handler
+const HTTP_SERVER_ERROR = 5000;
+app.use(function(err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+
+  return res.status(err.status || HTTP_SERVER_ERROR).render('5000');
+});
 
 app.get('/', function (req, res) {
   res.json({ message: "Welcome to azza  application. using jwt "}); 
