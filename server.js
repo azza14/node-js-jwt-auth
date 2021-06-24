@@ -50,6 +50,7 @@ db.sequelize.sync({ force: false}).then(()=>{
  require('./app/routes/user.routes')(app);
  
 require('./app/routes/index')(app);
+require('./app/routes/tutorial.routes')(ap);
 
 // production error handler
 const HTTP_SERVER_ERROR = 5000;
