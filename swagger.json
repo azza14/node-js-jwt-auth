@@ -1,0 +1,279 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": " Auth API",
+        "version": "1.0.0",
+        "descriptipon": " Node.js  for JWT Authentication ",
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+
+    },
+    "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+        {
+           "name": "API For Users",
+            "description": "Everything about  User"
+       },
+       {
+           "name": "API For Role",
+           "description": "Everything about  Role "
+       },
+      {
+          "name": "API For excel",
+          "description": " upload and download file excel  "
+      }
+   ],
+    "schemes": [
+      "http",
+      "https"
+    ],
+    "consumes": [
+        "application/json",
+        "application/xml"
+    ],
+    "produces": [
+        "application/json",
+        "application/xml"
+    ],
+    "paths": 
+    {
+    "/api/test/alluser": {
+            "get": {
+                "tags": [ "API For Users"],
+                "description": "you can use this end point to  get all users",
+                "parameters": [],
+                "produces": ["application/json"],
+                "responses": 
+                {
+                    "200": {
+                        "description": "A list of users.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                 "$ref": "#/definitions/singup"
+                            }
+                        }
+                    }
+                },
+                
+                "requestBody": {
+                  "required": true,
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "example": { "name": "three", "description": "ae" }
+                      },
+                      "example": "{\r\n    \"name\":\"three\",\r\n    \"description\":\"ae\"\r\n}"
+                    }
+                  }
+                }
+            }
+          },
+    "/api/test/user": {
+            "get": {
+                "tags": [
+                    "API For Users"
+                  ],
+                "description": "Returns   user  from the system that the user has access to",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "user ",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                              "$ref": "#/definitions/singup"
+                            }
+                        }
+                    }
+                }
+            }
+
+        },
+    "/api/test/admin": {
+          "get": {
+              "tags": [
+                  "API For Users"
+                ],
+              "description": "Returns   user  from the system that the user has access to",
+              "produces": [
+                  "application/json"
+              ],
+              "parameters":[
+                
+              ],
+              "responses": {
+                  "200": {
+                      "description": "user ",
+                      "schema": {
+                          "type": "object",
+                          "items": {
+                              "$ref": ""
+                          }
+                      }
+                  }
+              }
+          }
+
+      },
+    "/api/test/mod": {
+        "get": {
+            "tags": [
+                "API For Users"
+              ],
+            "description": "Returns   user  from the system that the user has access to",
+            "produces": [
+                "application/json"
+            ],
+            "responses": {
+                "200": {
+                    "description": "user ",
+                    "schema": {
+                        "type": "object",
+                        "items": {
+                            "$ref": ""
+                        }
+                    }
+                }
+            }
+        }
+
+    },
+    "/api/auth/signup": {
+          "post": {
+              "tags": [ "API For Role"],
+              "description": "Returns role from the system that the role  has access to",
+              "produces": ["application/json"],
+              "parameters": [
+                {
+                  "in": "body",
+                  "name": "body",
+                  "description": "User object that needs to be added to the DB",
+                  "required": false,
+                  "schema": {
+                    "$ref": "#/definitions/singup"
+                  }
+                }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "user ",
+                      "headers": {}
+                      
+                  }
+              }
+          }
+    },
+    "/api/auth/signin": {
+        "post": {
+            "tags": [ "API For Role"],
+            "description": "Returns role from the system that the role  has access to",
+            "produces": [
+                "application/json",
+                "application/xml"
+            ],
+            "parameters":[
+              {
+                "in": "body",
+                "name": "body",
+                "description": "Book object that needs to be added to the DB",
+                "required": false,
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/definitions/signin"
+                }
+              }
+            ],
+            "responses": {
+                "200": {
+                    "description": "user ",
+                    "schema": {
+                        "type": "object",
+                        "items": {
+                          "$ref": "#/definitions/signin"
+                        }
+                    }
+                }
+            }
+        }
+      }               
+    
+    }
+     , 
+    "definitions": {
+        "users":
+         {
+            "required": [
+                "email",
+                "username",
+                "password"
+            ],
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "createdAt":{
+                  "type":"string"
+                },
+                "updatedAt":{
+                  "type":"string"
+                }
+            }
+        },
+        "signin":
+        {
+          "type": "object",
+          "required": [
+            "email",
+            "username",
+            "password"
+        ],
+        "properties": {
+          "username": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string"
+        },
+        "password": {
+            "type": "string"
+        }
+        }
+          
+        },
+        "singup": 
+        {
+            "type": "object",
+            "properties": {
+              "username": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "email":{
+                "type":"string"
+              },
+              "roles":{
+                "type":"string"
+              }
+            }
+          }
+    }
+}
